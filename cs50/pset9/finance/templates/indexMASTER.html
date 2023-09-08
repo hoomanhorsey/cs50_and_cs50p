@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bought
+{% endblock %}
+
+{% block main %}
+
+<h2>INDEX</h2>
+
+
+    <table class="table table-striped">
+        <thead>
+        </thead>
+        <tbody>
+
+
+            <tr>
+                <th> Stocks </th>
+                <th> Symbol </th>
+                <th> Number of shares owned</th>
+                <th> Current Price </th>
+                <th> Value of Each holding</th>
+            </tr>
+
+
+            {% for i in index %}
+
+            <tr>
+                <td>  {{ i.stock }} </td>
+                <td>  {{ i.symbol }}    </td>
+                <td>  {{ (i.sum_sharesbought - i.sum_sharessold) }}</td>
+                <td>  {{ i.price | usd }}  </td>
+                <td>  {{ ((i.price) * (i.sum_sharesbought - i.sum_sharessold)) | usd  }} </td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <th>Current Cash Balance</th> <td>{{ cash | usd}} </td>
+
+            </tr>
+
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>Grand Total (Cash + Shares)</th> <td>{{ grandtotal | usd }} </td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+{% endblock %}

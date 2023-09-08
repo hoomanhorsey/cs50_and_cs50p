@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+    <form action="/changepass" method="post">
+
+        <p>Please enter your old password. </p>
+        <p>Please also enter your new password, ensuring that it includes one special / non alphanumeric character.</p>
+         <p>   For example, ! @ # $ % ^ & * or others.</p>
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="oldpassword" name="oldpassword" placeholder="Old Password" type="password">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="newpassword" name="newpassword" placeholder="New Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmpassword" name="confirmpassword" placeholder="Confirm New Password" type="password">
+            <!-- Probably don't need to have all these names for confirmation.  Just simply, if they don't match, then go to failure.-->
+        </div>
+
+        <button class="btn btn-primary" type="submit">Change</button>
+
+    </form>
+{% endblock %}

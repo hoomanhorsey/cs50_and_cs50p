@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log Chore
+{% endblock %}
+
+
+{% block main %}
+
+<body class="bluebackground">
+
+
+<h2>Log Chores</h2>
+
+
+<table class="table table-striped">
+    <thead>
+    </thead>
+
+    <tbody>
+
+        {% if alert == "logged"-%}
+        <div class="alert alert-primary" role="alert">
+        <p>Good job {{currentuser}}! </p>
+
+        <p>You've logged a chore!</p>
+
+        {% for i in confirm %}
+            In the '{{ i.chorecategory }}' category, the chore of '
+            {{ i.chore }}' was performed on
+            {{ i.displaydate }}
+        {% endfor %}
+
+        {% else -%}
+        <div class="alert alert-#E1F5FE" role="alert">
+        </div>
+        {% endif %}
+        <!-- Note, change alert default color if you change background color-->
+
+
+<table class="table table-striped">
+    
+    <thead>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <th> Category </th>
+            <th> Chore</th>
+            <th> When</th>
+            <th> Submit</th>
+        </tr>
+
+
+
+        {% for i in housecustom %}
+
+        <form action="/logchore" method="post">
+
+
+            <tr>
+            
+                <td name="chorecategory" value="{{i.chorecategory}}"> {{i.chorecategory }} </td>                         
+
+                <td>
+                    <div class="mb-3">
+                        <select id="choreid" name="choreid">
+                            <option>--Please select a chore--</option>
+                                
+                                {% for c in choredefault %}
+                                
+                                    {% if c.choreid in i.choreid %}    
+                                        <option value="{{c.choreid}}"> {{c.chore}} , {{c.choreid}}</option>     
+                                    {% endif %}                                    
+
+                                {% endfor %}
+                                
+                        </select>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="mb-3">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="date2" name="date" placeholder="date" required type="date">
+                    </div>
+                    
+                </td>
+
+                <td>
+                    <button class="btn btn-primary" type="submit">Log chore!</button>  </td>
+                </td>
+
+
+                </form>
+                
+                {% endfor %}
+            </tr>
+        
+    
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Finished logging chores....</p>
+ <p class="btn"> <a href="/"> Return to index </a> </p>
+
+<script>
+        document.getElementById('date').setAttribute('max', new Date().toISOString().split('T')[0])
+        document.getElementById('date1').setAttribute('max', new Date().toISOString().split('T')[0])
+        document.getElementById('date2').setAttribute('max', new Date().toISOString().split('T')[0])
+        document.getElementById('date3').setAttribute('max', new Date().toISOString().split('T')[0])
+</script>
+
+</body>
+
+{% endblock %}

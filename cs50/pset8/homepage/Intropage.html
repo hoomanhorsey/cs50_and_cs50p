@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+
+<style>
+
+/* Do not put following styles in CSS file. These only relate to the intro page. Otherewise they will apply to all pages */
+
+a {
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  font-family: courier;
+  font-size: 40px;
+  position: relative;
+  animation-name: slider;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+
+  border: none;
+  color: black;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+  margin: 4px 2px;
+  cursor: pointer
+
+}
+
+@keyframes slider {
+  0%   {background-color:pink; left:0px; top:300px;}
+  25%  {background-color:red; left:1000px; top:100px;}
+  50%  {background-color:pink; left:2400px; top:600px;}
+  75%  {background-color:red; left:1000px; top:800px;}
+  100% {background-color:pink; left:0px; top:300px;}
+}
+
+    </style>
+
+  <link href="styles.css" rel="stylesheet"><!-- stylesheet css-->
+  <title> Intro to Andrew's Homepage</title>
+
+</head>
+
+<body>
+<h1  style="border: 30px solid Tomato; text-align:center;" >Hello to Andrew</h1>
+
+<h1 style="border: 20px solid DodgerBlue; text-align:center;">Hello My Website</h1>
+
+<h1 style="border: 10px solid Violet; text-align:center;">Hello To Andrew Website</h1>
+
+<a class="buttonintro" style="font-size: 20px" href="index.html">Please enter</a>
+
+</body>
+</html>

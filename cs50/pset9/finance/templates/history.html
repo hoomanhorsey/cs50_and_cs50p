@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bought
+{% endblock %}
+
+{% block main %}
+
+<h2>Transaction History</h2>
+    <table class="table table-striped">
+        <thead>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <th>Bought/Sold</th>
+                <th >Stock </th>
+                <th >Symbol </th>
+                <th >Shares bought/sold </th>
+                <th >Price (per share) </th>
+                <th>Transaction Value</th>
+                <th >Date of transaction</th>
+            </tr>
+
+            {% for i in history %}
+            <tr>
+                <td>
+                    {% if i.sharesbought > 0 -%}
+                        {{"Bought"}}
+                        {% else -%}
+                        {{"Sold"}}
+                        {% endif %}             </td>
+
+                <td>{{ i.stock }} </td>
+                <td>{{ i.symbol }} </td>
+
+                <td>{% if i.sharesbought > 0 -%} {{ i.sharesbought }} {% else -%} {{ -i.sharessold }} {% endif %}  </td>
+                <td>{{ i.shareprice | usd  }}            </td>
+                <td>{{ ((i.shareprice) * ( i.sharesbought + i.sharessold)) | usd  }} </td>
+                <td>{{ i.date}}     </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

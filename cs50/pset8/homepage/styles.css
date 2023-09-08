@@ -1,0 +1,88 @@
+/*DOCUMENT ALL */
+
+body {
+    background-color: #d1f7f4
+}
+
+.button {
+  background-color: #9afefa;
+  border: none;
+  color: black;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/*Intro Page*/
+.buttonintro {
+background-color: #9afefa;
+border: none;
+color: black;
+padding: 20px 34px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+.navheader {
+background-color: #febffe;
+border: none;
+color: black;
+padding: 20px 34px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;
+  }
+
+/*Page */
+
+.header  {
+text-align: center;
+background-color: #d1f7f4;
+}
+
+.image  {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center;
+  background-size: 250px;
+}
+
+
+
+
+/*Nav Table */
+
+#ul_nav {
+    background-color: #9afefa;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  #li_a {
+
+    float: left;
+    display: block;
+    background-color: #9afefa;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+  }
+
+  #li_a:hover {
+    background-color: #f9caf1;
+  }

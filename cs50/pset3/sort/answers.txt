@@ -1,0 +1,11 @@
+sort1 uses: bubble
+
+How do you know?: Speed of sort with 'random' was slowest, but speed of sort for 'sorted' was the fastest.  Suggests that best case scenario Big Omega(n) and worst case is Big O(n squared)
+
+sort2 uses: merge
+
+How do you know?: Fastest with the random sort, little variation between 5k to 50k results, using recursion. But it also had to use recursion for the 'sorted' and so while it was still quick, the time taken was simliar.  I.e. Best case and worse case scenario were similar Big O (log n) Big Omega(log n).   Also, if possible to compare with the other sorts, it was fastest with the random but not fastest with sorted.
+
+sort3 uses: selection
+
+How do you know?: very slow when numbers are already sorted, comparable with random. Which suggests Big O of (n squared) and Big Omega of (ns squared)

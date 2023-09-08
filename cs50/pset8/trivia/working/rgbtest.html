@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <title>rgb test</title>
+</head>
+    <style>
+        a
+        {
+            color: "red";
+        }
+    </style>
+    <body>
+        <li><a> Shaggy Let the Dogs Out </a>  <input type="radio" id="red"></li>
+        <li>Who? Who? Who? Who Let the Dogs Out??!!! <input type="radio" id="green"></li>
+        <button id="blue">B</button>
+        <script>
+
+            let body = document.querySelector('body');
+
+            document.querySelector('#red').addEventListener('click', function() {
+                body.style.color = 'red';
+            });
+
+            document.querySelector('#green').addEventListener('click', function() {
+                body.style.backgroundColor = 'green';>>>>>>>
+            });
+
+            document.querySelector('#blue').addEventListener('click', function() {
+                body.style.backgroundColor = 'blue';
+            });
+
+        </script>
+    </body>
+</html>

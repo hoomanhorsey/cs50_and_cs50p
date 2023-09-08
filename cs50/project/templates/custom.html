@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Customise Chores
+{% endblock %}
+
+
+{% block main %}
+
+<body class="bluebackground">
+
+
+<h2>Customise chores</h2>
+<br>
+
+<table class="table table-striped">
+    <thead>        
+        <p>Select or deselect the chores that will apply to your house. </p>
+        <p>Press submit to confirm your choices.</p>
+    </thead>
+
+    <tbody>     
+        <tr>
+            <th> Category </th>
+            <th> Chore</th>
+            <th> Select/Deselect</th>        
+        </tr>
+
+        <form action="/custom" method="POST">
+        <tr>        
+            {% for i in choredefault %}     
+    
+        <tr >
+                <td>  
+                    {{i.chorecategory }} <br>
+                </td>
+
+                <td>
+                    {{i.chore}}
+                </td>
+
+                <td>
+                    {% if i.choreid in housecustom %}    
+                        <input type="checkbox" checked id="{{i.choreid}}" name="{{i.choreid}}" value="{{i.choreid}}">
+                    {% else %}
+                        <input type="checkbox" id="{{i.choreid}}" name="{{i.choreid}}" value="{{i.choreid}}">
+                    {% endif %}
+                </td>                   
+               
+            {% endfor %}
+      
+    </tr>
+    </tbody>
+    <br>
+    <p>              
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </p>
+
+    <br>
+</form>
+
+</table>
+
+
+
+<p>Finished logging chores....</p>
+ <p class="btn"> <a href="/"> Return to index </a> </p>
+
+</body>
+
+{% endblock %}
+

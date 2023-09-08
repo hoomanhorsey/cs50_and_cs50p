@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bought
+{% endblock %}
+
+{% block main %}
+
+<h2>Bought</h2>
+
+<p>You successfully bought {{ shares }} share(s) of stock in {{ stock.name }} at a price of {{stock.price | usd}} per share.</p>
+<p>This cost you {{ consideration | usd }}.</p>
+<p>Your updated cash balance is {{ cash | usd }}</p>
+
+    <table>
+        <thead>
+
+        </thead>
+        <tbody>
+
+
+
+
+            <tr>
+                <th>Stock Name</th>
+                <th>Symbol</th>
+                <th>Price</th>
+
+                <th>consideration</th>
+
+                <th>Updated Cash</th>
+
+
+                <th>shares</th>
+                <th>stockprice</th>
+
+
+            </tr>
+            <tr>
+
+                <td>{{ stock.name }} </td>
+                <td>{{ stock.symbol }} </td>
+                <td>{{ stock.price | usd }} </td>
+                <td>{{ consideration | usd }} </td>
+
+                <td>{{ cash | usd }} </td>
+
+                <td>{{ shares }} </td>
+                <td>{{ stockprice | usd }} </td>
+
+
+
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

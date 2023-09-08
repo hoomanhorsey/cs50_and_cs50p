@@ -1,0 +1,75 @@
+
+
+Population Comparer
+
+Functionality
+
+Enter name of city or state or country
+    -   How to check?
+        - check against list, starting with first letter of place
+        -   Check:
+                "Did you mean 'x'?'
+
+        - Is it a city, state/province, or country?  Many places share the same name, i.e. Victoria is a state in Australia, and a city in Canada.
+
+
+        [Name], [City, State, Country], [Population]
+
+Check 'Place' population against APIs
+
+Print Population of 'Place'
+
+Consult API populations to find other places that have a population that is a simliar size, within a specific range, where the range is determined by the Population of 'Place.
+    - i.e. if it's a town of 20,000, then the range is 2,000 - capturing places that are 18,000 to 22,000
+    if it's a town of 200,000, then the range is 20,000, capturing places that are 180,000 to 220,000
+    if it's a country of 20,000,000, then the range would be 2,000,000, capturing places that are in a range of 18,000,000 to 22,000,000
+
+    Perhaps you can ask the user to nominate a range, in terms of percentage?  10%, as per the examples above.
+
+    Or 5 %/ Or 1%
+
+
+
+
+Then the results will be printed, in order of size closest.
+
+Perhaps you can specify how many similar sized places you want?
+
+
+
+[
+    [
+        {'index': 1},
+        {'name': 'Sydney'},
+        {'state/province': None},
+        {'Country': 'Australia'},
+        {'Population': 4627345},
+        {'Coordinates':
+            {'lon': 151.20732, 'lat': -33.86785}
+        }
+    ],
+    [
+        {'index': 2},
+        {'name': 'Sydney'},
+        {'state/province': None},
+        {'Country': 'Canada'},
+        {'Population': 105968},
+        {'Coordinates':
+            {'lon': -60.1831, 'lat': 46.1351}
+        }
+    ]
+]
+
+
+{
+    1:[
+        {'index': 1},
+        {'name': 'Sydney'},
+        {'state/province': None},
+        {'country': 'Australia'},
+        {'population': 4627345},
+        {'coordinates':
+            {'lon': 151.20732, 'lat': -33.86785}
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title> query selector </title>
+    </head>
+    <body>
+        <form>
+            <input autocomplete="off" autofocus id="name" placeholder="Name" type="text">
+            <input type="submit">
+        </form>
+        <script>
+
+            function greet()
+            {
+                let name = document.querySelector('#name').value;
+                alert('hello, '+ name);
+            }
+            document.querySelector('form').addEventListener('submit', greet);
+            // document.querySelector chooses 'form' -
+            // listening for when 'submit' is pressed
+            // then the 'greet function is called
+
+        </script>
+    </body>
+</html>

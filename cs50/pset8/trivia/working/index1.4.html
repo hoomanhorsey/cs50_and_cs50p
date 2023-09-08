@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            // HERE BE ADD THE JAVASCRIPT
+
+            //  document.querySelector - use to select some element from page by tag, id, or class (other Css selector)
+                // allows access to button, or input field, to access what user types in or do somethng to that button, or style, or something in the html
+
+
+            // addEventListener function, that adds code that can respond to some event that happens on the webpage.
+             // add to the button, so that it changes the behaviour of the button once clicked, i.e. change colour, or change html to display text 'correct/incorrect'
+
+             // Can link to a sep javascript file.
+
+// pseudo code
+// if button a is pressed, then make red, print incorrect
+
+// if button b is pressed, then make green, print correct
+
+// if button c is pressed, then make red, print incorrect.
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <!-- TODO: Add multiple choice question here -->
+                    <hr>
+
+                    <h3>Who let the dogs out?</h3>
+                        <ul>
+                            <li>Scraggy let the dogs out: <input type = 'radio' id="a" /> </li>
+                            <button id="red">R</button>
+                            <li>Who? Who? Who? Let the dogs out?: <input name = "b" type = 'radio' id="b"/> </li>
+                            <li>Nobody let the dogs out. They are still inside: <input name = "c" type = 'radio' id="c"/> </li>
+                        </ul>
+                        <script>
+
+                            // This script is taken from the lecture. I don't think it properly addresses the actual problem
+                                let body = document.querySelector('body');
+
+
+
+                                    document.querySelector('#a').addEventListener('click', function() {
+                                    body.style.backgroundColor = 'red';
+                                });
+
+
+                                function colour()
+                                {
+                                    body.style.backgroundColor = 'red';
+                                }
+
+                                document.querySelector('#a').addEventListener('click', function colour)
+
+
+
+
+
+                                document.querySelector('#b').addEventListener('click', function() {
+                                body.style.backgroundColor = 'green';
+                                ("Correct")
+                                });
+                                document.querySelector('#c').addEventListener('click', function() {
+                                body.style.backgroundColor = 'red';
+                                });
+                        </script>
+
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+
+                <h3>Who is the current Prime Minister of Australia (as of 2022)?</h3>
+
+                Answer: <input name = 'X' type = 'text' />
+                <input name = "f" type = 'submit' />
+
+
+
+                <form>
+                    <input autocomplete="off" autofocus id="answer" type="text" >
+                    <input type="Submit" value="Check Answer">
+                </form>
+
+                <script>
+                function checkanswer()
+                    {
+                        let answer = document.querySelector('#answer').value;
+                        if (answer = ("anthony" || "Anthony"))
+                        {
+                            alert("inCorrect!");
+                        }
+                        else
+                        {
+                            alert("Incorrect! Try again!");
+                        }
+                    }
+
+                    document.querySelector('form').addEventListener('submit', checkanswer);
+
+
+                function sayhello()
+                    {
+                        let name = document.querySelector('#answer').value;
+                            alert("hello, " + answer);
+                    }
+
+                    document.querySelector('form').addEventListener('submit', sayhello);
+
+
+                </script>
+
+
+
+
+                </div>
+
+                <!-- IMPLEMENTATION - When an incorrect answer choice is clicked, the text field should turn red and the text should appear beneath the question that says 'incorrect'-->
+                <!-- IMPLEMENTATION - When the correct  answer is given, the text field should turn green and the text should appear beneath the question that says 'correct!'-->
+                <!-- IMPLEMENTATION - When an incorrect answer choice is clicked, the button should 1) turn red, 2) and text should appear beneath the question that says 'Incorrect'-->
+                <!-- IMPLEMENTATION - When the correct answer is cliecked, 1) button should turn green and 2) the text should appear beneath the question that says 'Correct'.
+
+                <! TO DO - Find out 1) how to change radio colour, 2) print 'correct', 3) ensure correct behaviour of radio buttons, i.e. only able to select one.-->
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </body>
+</html>
+
+

@@ -1,0 +1,216 @@
+sqlite> SELECT stock, sharesbought, shareprice FROM ledger_buy WHERE user_id = 13 ORDER BY stock;
++---------------------------+--------------+------------+
+|           stock           | sharesbought | shareprice |
++---------------------------+--------------+------------+
+| Agilent Technologies Inc. | 5            | 127.9      |
+| Agilent Technologies Inc. | 7            | 127.9      |
+| Netflix Inc.              | 20           | 232.51     |
+| Netflix Inc.              | 2            | 232.51     |
+| Netflix Inc.              | 6            | 232.51     |
+| Netflix Inc.              | 9            | 232.51     |
+| Netflix Inc.              | 9            | 232.51     |
+| Netflix Inc.              | 9            | 232.51     |
+| Netflix Inc.              | 20           | 232.51     |
++---------------------------+--------------+------------+
+
+
+
+
+
+
+ledger_buy
+
+
+stock TEXT
+sharesbought INTEGER
+shareprice NUMERAL
+datebought NUMERAL
+consideration
+user_id INTEGER
+
+
+sqlite> SELECT stock, sum(sharesbought), sum(consideration) FROM ledger_buy WHERE user_id = 1 GROUP BY stock;
++--------------------------------+-------------------+--------------------+
+|             stock              | sum(sharesbought) | sum(consideration) |
++--------------------------------+-------------------+--------------------+
+| Gamestop Corporation - Class A | 61                | 1502.43            |
+| Microsoft Corporation          | 35                | 7999.6             |
++--------------------------------+-------------------+--------------------+
+
+
+sqlite> SELECT * FROM ledger_buy;
++-----------------------------------+--------------+------------+---------------+---------+---------------------+
+|               stock               | sharesbought | shareprice | consideration | user_id |     datebought      |
++-----------------------------------+--------------+------------+---------------+---------+---------------------+
+| Apple Inc                         | 11           | 138.38     | 1522.18       | 3       | 2022-10-15 03:43:59 |
+| Apple Inc                         | 15           | 138.38     | 2075.7        | 3       | 2022-10-15 03:48:14 |
+| Netflix Inc.                      | 20           | 230        | 4600          | 3       | 2022-10-15 03:48:24 |
+| Berkshire Hathaway Inc. - Class B | 3            | 272.67     | 818.01        | 3       | 2022-10-15 03:49:44 |
+| PepsiCo Inc                       | 12           | 170.19     | 2042.28       | 2       | 2022-10-15 03:50:37 |
+| Coca-Cola Consolidated Inc        | 15           | 433.34     | 6500.1        | 2       | 2022-10-15 03:50:56 |
+| Meta Platforms Inc - Class A      | 11           | 126.76     | 1394.36       | 2       | 2022-10-15 03:52:25 |
+
+
+
+
+sqlite> SELECT stock, symbol, SUM(sharesbought) AS sum_sharesbought FROM ledger_buy WHERE user_id = 4 GROUP BY stock;
++-----------------------------+--------+------------------+
+|            stock            | symbol | sum_sharesbought |
++-----------------------------+--------+------------------+
+| Apple Inc                   | aapl   | 22               |
+| Engine Gaming and Media Inc | game   | 4                |
+| Microsoft Corporation       | msft   | 21               |
+
+
+sqlite> SELECT stock, symbol, SUM(sharesbought) AS sum_sharesbought, cash FROM ledger_buy JOIN users ON users.id = ledger_buy.user_id  GROUP BY stock;
++-----------------------------+--------+------------------+------------------+
+|            stock            | symbol | sum_sharesbought |       cash       |
++-----------------------------+--------+------------------+------------------+
+| Apple Inc                   | aapl   | 22               | 879.124400000001 |
+| Engine Gaming and Media Inc | game   | 4                | 879.124400000001 |
+| Microsoft Corporation       | msft   | 21               | 879.124400000001 |
++-----------------------------+--------+------------------+------------------+
+
+
+
+
+
+sqlite> SELECT symbol FROM ledger_buy where user_id = 7 GROUP BY symbol;
++--------+
+| symbol |
++--------+
+| a      |
+| aapl   |
+| aenz   |
+| brk.b  |
+| msft   |
++--------+
+
+index = [
+    {
+        'stock': 'Aenza S.A.A - ADR',
+        'symbol': 'aenz',
+        'sum_sharesbought': 5,
+        'cash': 175.91550000000134},
+    {
+        'stock': 'Agilent Technologies Inc.',
+        'symbol': 'a',
+        'sum_sharesbought': 1,
+        'cash': 175.91550000000134},
+    {
+        'stock': 'Apple Inc',
+        'symbol': 'aapl',
+        'sum_sharesbought': 13,
+        'cash': 175.91550000000134},
+    {
+        'stock': 'Berkshire Hathaway Inc. - Class B',
+        'symbol': 'brk.b',
+        'sum_sharesbought': 6,
+        'cash': 175.91550000000134},
+    {
+        'stock': 'Microsoft Corporation',
+        'symbol': 'msft',
+        'sum_sharesbought': 26,
+        'cash': 175.91550000000134}
+    ]
+
+  quote = []
+    for row in index:
+        quote.append(lookup(row["symbol"]))
+
+    print(quote)
+
+quote = [
+    {
+        'name': 'Aenza S.A.A - ADR',
+        'price': 0.8139,
+        'symbol': 'AENZ'},
+    {
+        'name': 'Agilent Technologies Inc.',
+        'price': 128.96,
+        'symbol': 'A'},
+    {
+        'name': 'Apple Inc',
+        'price': 143.86,
+        'symbol': 'AAPL'},
+    {
+        'name': 'Berkshire Hathaway Inc. - Class B',
+        'price': 278.34,
+        'symbol': 'BRK.B'},
+    {
+        'name': 'Microsoft Corporation',
+        'price': 236.48,
+        'symbol': 'MSFT'}
+    ]
+
+
+revised index = [
+    {'stock': 'Aenza S.A.A - ADR', 'symbol': 'aenz', 'sum_sharesbought': 5, 'cash': 175.91550000000134, 'price':
+        {'name': 'Aenza S.A.A - ADR', 'price': 0.8139, 'symbol': 'AENZ'}},
+    {'stock': 'Agilent Technologies Inc.', 'symbol': 'a', 'sum_sharesbought': 1, 'cash': 175.91550000000134, 'price': {'name': 'Agilent Technologies Inc.', 'price': 128.96, 'symbol': 'A'}}, {'stock': 'Apple Inc', 'symbol': 'aapl', 'sum_sharesbought': 13, 'cash': 175.91550000000134, 'price': {'name': 'Apple Inc', 'price': 143.86, 'symbol': 'AAPL'}}, {'stock': 'Berkshire Hathaway Inc. - Class B', 'symbol': 'brk.b', 'sum_sharesbought': 6, 'cash': 175.91550000000134, 'price': {'name': 'Berkshire Hathaway Inc. - Class B', 'price': 278.34, 'symbol': 'BRK.B'}}, {'stock': 'Microsoft Corporation', 'symbol': 'msft', 'sum_sharesbought': 26, 'cash': 175.91550000000134, 'price': {'name': 'Microsoft Corporation', 'price': 236.48, 'symbol': 'MSFT'}}]
+
+
+
+ # Check to see if user has the shares to sell (even if not offered by the drop down list)
+        ledgercheck = db.execute("SELECT symbol, SUM(sharesbought) AS sum_sharesbought, SUM(sharessold) AS sum_sharessold FROM users JOIN ledger ON users.id = ledger.user_id WHERE ledger.user_id = ? GROUP BY ledger.stock", session["user_id"])
+        # Using a counter that iterates +1 if found, check to see if stock exists in ledger
+        i = 0
+        print("")
+        print("ledgercheck")
+        print(ledgercheck)
+        for x in ledgercheck:
+            print('x')
+            print(x)
+            for y in x.values():
+                print('y')
+                print(y)
+                if  y == (stock['symbol']):
+                    i = i + 1
+        if (i < 1):
+            return apology("Sorry. You don't own these shares", 400)
+
+        #check to see if you have enough shares to sell
+        if shares > (ledgercheck[0]['sum_sharesbought'] - ledgercheck[0]['sum_sharessold']):
+            return apology("Sorry. You don't have enough shares to sell this amount.", 400)
+
+
+
+
+
+@app.route("/addcash", methods=["GET", "POST"])
+@login_required
+def addcash():
+    """Add cash"""
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        # Get cash amount to be added
+        newcash = request.form.get("newcash")
+
+        print(newcash)
+
+        # Ensure number of shares is entered, is an integer, and is a positive numer
+        if (not newcash ):
+            return apology("Sorry. You haven't entered anything.", 400)
+
+
+        # setting the maxsplit parameter to 1, will return a list with 2 elements!
+        testcash = newcash.split(".", 1)
+
+        print(testcash)
+        print(testcash[1])
+
+        if (len(testcash[1])) > 2:
+            print("NOPE")
+            return apology("Sorry. Please only provide an amount up to 2 decimal places", 400)
+
+        #Ensure amount is numeric (i.e. numbers, include decimals)
+        #elif (newcash.isdigit()) != True:
+         #   return apology("Please enter an amount in dollars.", 400)
+
+        return render_template("addcash.html")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("addcash.html")

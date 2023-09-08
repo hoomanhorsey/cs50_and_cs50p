@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+
+        <p>Please include one special / non alphanumeric character in your password.</p>
+        <p>For example, ! @ # $ % ^ & * or others.</p>
+
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Create Username" type="text">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Create Password" type="password">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmpassword" name="confirmation" placeholder="Confirm Password" type="password">
+            <!-- Probably don't need to have all these names for confirmation.  Just simply, if they don't match, then go to failure.-->
+        </div>
+
+        <button class="btn btn-primary" type="submit">Register</button>
+
+    </form>
+{% endblock %}
